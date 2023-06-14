@@ -1,15 +1,7 @@
 const { response } = require("express")
 
 
-const getImages = (req, res = response) => {
-
-    res.status(201).json({
-
-    })
-
-}
-
-const saveImage = (req, res = response) => {
+const saveUser = (req, res = response) => {
 
     res.status(201).json({
 
@@ -24,4 +16,10 @@ const deleteUser = (req, res = response) => {
 
     })
 
+}
+
+
+module.exports = {
+    saveUser,
+    deleteUser
 }

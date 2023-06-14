@@ -1,17 +1,17 @@
 const { dbConnection } = require("../database/config.database");
 const express = require('express');
-const cors = require = ('cors');
+const cors = require('cors');
 
-class Server {
-    constructor() {
+class Server {   
+     constructor() {
         this.app = express()
-        this.port = Process.env.PORT || 8080;
+        this.port = process.env.PORT || 7070;
         this.paths = {
-            images:'api/images',
+            resource:'/api/resource',
         }
         this.conectarDB();
         this.middleware();
-        this.listen();
+        this.routes();
     }
 
     async conectarDB(){
@@ -25,7 +25,7 @@ class Server {
     }
 
     routes() {
-        this.app.use(this.path.images, require('../routes/images'))
+        this.app.use(this.paths.resource, require('../routes/resource'))
     }
 
     listen() {
