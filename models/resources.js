@@ -13,12 +13,16 @@ const ResourceSchema = Schema({
         type: String,
         required: [true, 'Agregar el tipo de recurso es requerido!'],
     },
-    usuario:{
+    img: {
+        data: Buffer,
+        contentType: String,
+        required: [true, 'Agregar la imagen es requerido!'],
+    },
+    usuario: {
         type: Schema.Types.ObjectId,
-        ref:'Usuario',
-        require:true
+        ref: 'Usuario',
+        require: true
     }
-
 })
 
 module.exports = model('Resource', ResourceSchema)

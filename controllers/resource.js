@@ -3,14 +3,14 @@ const { response } = require("express")
 
 const getResource = (req, res = response) => {
 
-    res.status(200).json({
+   return res.status(200).json({
         msg:'Get images'
     })
 
 }
 
 const saveResource = (req, res = response) => {
-    res.status(201).json({
+    return res.status(201).json({
         msg:'save image'
     })
 
@@ -18,7 +18,7 @@ const saveResource = (req, res = response) => {
 
 const deleteResource = (req, res = response) => {
 
-    res.status(204).json({
+    return res.status(204).json({
         msg:'delete image'
     })
 
