@@ -1,8 +1,9 @@
-const { Router } = require('express')
+const { Router } = require('express');
+const { getImages } = require('../controllers/images');
 const router = Router();
 
 
-router.get('')
+router.get('/', getImages)
 
 router.post('')
 

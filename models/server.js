@@ -7,14 +7,12 @@ class Server {
         this.app = express()
         this.port = Process.env.PORT || 8080;
         this.paths = {
-
+            images:'api/images',
         }
-
         this.conectarDB();
         this.middleware();
         this.listen();
     }
-
 
     async conectarDB(){
         dbConnection()
@@ -27,7 +25,7 @@ class Server {
     }
 
     routes() {
-        this.app.use(this.path.images, require('../routes'))
+        this.app.use(this.path.images, require('../routes/images'))
     }
 
     listen() {
