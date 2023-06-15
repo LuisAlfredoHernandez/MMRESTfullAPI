@@ -27,8 +27,8 @@ class Server {
         this.app.use(bodyParser.urlencoded({ extended: true }))
         this.app.use(bodyParser.json())
         this.app.use(cors({
-            origin: "http://localhost:5173",
-            methods: ["GET","POST","DELETE","PUT"]
+            origin: "*",
+            methods: ["GET","POST","DELETE","PUT"],
         }));
     }
 
