@@ -22,14 +22,14 @@ class Server {
     }
 
     middleware() {
-        this.app.use(cors({
-            origin: "http://localhost:5173",
-            methods: ["GET","POST","DELETE","PUT"]
-        }));
         this.app.use(express.static('public'))
         this.app.use(express.json())
         this.app.use(bodyParser.urlencoded({ extended: true }))
         this.app.use(bodyParser.json())
+        this.app.use(cors({
+            origin: "http://localhost:5173",
+            methods: ["GET","POST","DELETE","PUT"]
+        }));
     }
 
     routes() {
