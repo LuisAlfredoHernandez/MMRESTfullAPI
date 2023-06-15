@@ -1,17 +1,13 @@
 const { Router } = require('express');
-const { saveResource, getResources } = require('../controllers/resource');
-const { multerMiddleware } = require('../middlewares/multer');
+const { saveResource, getResources, deleteResource } = require('../controllers/resource');
 const router = Router();
 
 
 router.get('/', getResources)
 
-router.post('/', [
-    multerMiddleware
-], saveResource)
+router.post('/', saveResource)
 
-// router.delete('/')
+router.delete('/:nombre', deleteResource)
 
-// router.put('/');
 
 module.exports = router
