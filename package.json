@@ -8,5 +8,24 @@
     "mongoose": "^7.2.4",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.22"
-  }
+  },
+  "name": "mm",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisAlfredoHernandez/MMRESTfullAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisAlfredoHernandez/MMRESTfullAPI/issues"
+  },
+  "homepage": "https://github.com/LuisAlfredoHernandez/MMRESTfullAPI#readme",
+  "description": ""
 }
