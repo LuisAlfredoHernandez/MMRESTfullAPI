@@ -1,11 +1,14 @@
 const { Router } = require('express');
-const { getResource } = require('../controllers/resource');
+const { saveResource, getResources } = require('../controllers/resource');
+const { multerMiddleware } = require('../middlewares/multer');
 const router = Router();
 
 
-router.get('/', getResource)
+router.get('/', getResources)
 
-// router.post('/')
+router.post('/', [
+    multerMiddleware
+], saveResource)
 
 // router.delete('/')
 

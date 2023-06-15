@@ -1,7 +1,7 @@
 const { model, Schema } = require("mongoose");
 
 const ResourceSchema = Schema({
-    nombre: {
+    nombreImagen: {
         type: String,
         required: [true, 'El nombre es requerido!'],
     },
@@ -16,7 +16,6 @@ const ResourceSchema = Schema({
     img: {
         data: Buffer,
         contentType: String,
-        required: [true, 'Agregar la imagen es requerido!'],
     },
     usuario: {
         type: Schema.Types.ObjectId,
