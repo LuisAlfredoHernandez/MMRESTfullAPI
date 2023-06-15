@@ -3,8 +3,14 @@ const { User } = require("../models")
 
 
 const saveUser = async (req, res = response) => {
-    const name = req.body.nombre
-    const data = { nombre: name }
+    const nombre = req.body.nombre
+    const usuarioDB = await User.findOne({ nombre })
+    if (usuarioDB) {
+        return res.status(400).json({
+            msg: `Usuario: ${usuarioDB.nombre} ya existe `
+        })
+    }
+    const data = { nombre }
     const usuario = new User(data)
     await usuario.save();
     res.status(201).json(usuario)
