@@ -12,8 +12,8 @@ class Server {
             resource: '/api/resource',
             user: '/api/user',
         }
-        this.conectarDB();
         this.middleware();
+        this.conectarDB();
         this.routes();
     }
 
