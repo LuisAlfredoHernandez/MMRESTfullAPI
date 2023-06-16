@@ -32,7 +32,8 @@ const saveResource = (req, res = response) => {
                 await uploadObject.save();
                 res.status(201).json(uploadObject)
             }
-        } catch (error) {r
+        } catch (error) {
+            r
             console.error(error);
             res.status(500).send("Server Error");
         }
@@ -43,15 +44,15 @@ const saveResource = (req, res = response) => {
 
 const getResources = async (req, res = response) => {
     const { limite, desde } = req.query
-    const [usuario, total] = await Promise.all([
-        Resource.find(query)
+    const [resources, total] = await Promise.all([
+        Resource.find()
             .skip(desde)
             .limit(limite),
-        Resource.countDocuments(query)
+        Resource.countDocuments()
     ])
     res.status(200).json({
         total,
-        usuario
+        resources
     })
 }
 
