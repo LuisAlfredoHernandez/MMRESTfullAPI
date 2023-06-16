@@ -13,9 +13,9 @@ const ResourceSchema = Schema({
         type: String,
         required: [true, 'Agregar el tipo de recurso es requerido!'],
     },
-    img: {
-        data: Buffer,
-        contentType: String,
+    src: {
+        type: String,
+        required:[true, 'Agregar el recurso es mandatorio!']
     },
     usuario: {
         type: Schema.Types.ObjectId,
