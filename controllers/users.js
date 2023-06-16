@@ -1,5 +1,5 @@
 const { response } = require("express")
-const { User } = require("../models")
+const { User, Resource } = require("../models")
 
 
 const saveUser = async (req, res = response) => {
@@ -24,14 +24,25 @@ const deleteUser = async (req, res = response) => {
             msg: 'No se encontro usuario!'
         })
     }
-    const id = usuario._id;
-    const usuarioEliminado = await User.findByIdAndDelete(id)
+    const query = { usuario: usuario._id }
+    const [resources, total] = await Promise.all([
+        Resource.find(query),
+        Resource.countDocuments(query)
+    ])
+    const usuarioEliminado = await User.findByIdAndDelete(usuario._id)
+    for (let i = 0; i < resources.length; i++) {
+        await Resource.findByIdAndDelete(resources[i]._id)
+    }
     res.status(200).json({
-        msg: 'Usuario Eliminado!',
-        usuarioEliminado
+        msg: `Se elimino el usuario: ${usuarioEliminado}, y ${13} recurssos`,
+        usuarioEliminado,
+        resources,
+        total,
     })
 }
 
+
+const d = (second) => { third }
 
 module.exports = {
     saveUser,
