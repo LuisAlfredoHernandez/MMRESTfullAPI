@@ -1,9 +1,11 @@
 const { Router } = require('express');
-const { saveResource, getResources, deleteResource } = require('../controllers/resource');
+const { saveResource, getResources, deleteResource, getResourceByParam } = require('../controllers/resource');
 const router = Router();
 
 
 router.get('/', getResources)
+
+router.get('/:key/:value', getResourceByParam)
 
 router.post('/', saveResource)
 

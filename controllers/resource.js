@@ -1,8 +1,8 @@
 const { response } = require("express");
-const { Resource, User } = require("../models")
+const { Resource, User } = require("../models");
 
 
-const saveResource = async(req, res = response) => {
+const saveResource = async (req, res = response) => {
     try {
         const nombre = req.body.nombre;
         const usuario = await User.findOne({ nombre })
@@ -42,6 +42,36 @@ const getResources = async (req, res = response) => {
     })
 }
 
+
+const getResourceByParam = async (req, res = response) => {
+    const { key, value } = req.params
+    let query = {};
+
+    if (key === 'usuario') {
+        let nombre = String(value)
+        const nombreDB = await User.findOne({ nombre })
+        if (!nombreDB) {
+            return res.status(400).json(`El usuario ${value} no existe!`)
+        } else {
+            query = { usuario: nombreDB._id }
+        }
+    } else if (key === 'tipo') {
+        query = { tipo: value }
+    } else if (key === 'nombreImagen') {
+        query = { nombreImagen: value }
+    }
+
+    const [resources, total] = await Promise.all([
+        Resource.find(query),
+        Resource.countDocuments(query)
+    ])
+
+    res.status(200).json({
+
+        resources, total, query
+    })
+}
+
 const deleteResource = async (req, res = response) => {
     const { nombre } = req.params
     const resource = await Resource.findOne({ nombre })
@@ -63,5 +93,6 @@ const deleteResource = async (req, res = response) => {
 module.exports = {
     getResources,
     deleteResource,
-    saveResource
+    saveResource,
+    getResourceByParam
 }
