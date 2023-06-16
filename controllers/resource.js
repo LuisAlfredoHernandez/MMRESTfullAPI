@@ -73,18 +73,18 @@ const getResourceByParam = async (req, res = response) => {
 }
 
 const deleteResource = async (req, res = response) => {
-    const { nombre } = req.params
-    const resource = await Resource.findOne({ nombre })
+    const { nombreCategoria } = req.params
+    const resource = await Resource.findOne({ nombreCategoria })
     if (!resource) {
         return res.status(404).json({
-            msg: 'No se encontro usuario!'
+            msg: 'No se encontro el recurso!',
         })
     }
     const id = resource._id;
     const recursoEliminado = await Resource.findByIdAndDelete(id)
     res.status(200).json({
-        msg: 'Usuario Eliminado!',
-        recursoEliminado
+        msg: 'Recurso Eliminado!',
+        recursoEliminado,
     })
 
 }
