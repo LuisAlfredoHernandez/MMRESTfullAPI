@@ -9,7 +9,7 @@ router.get('/:key/:value', getResourceByParam)
 
 router.post('/', saveResource)
 
-router.delete('/:nombre', deleteResource)
+router.delete('/:nombreImagen', deleteResource)
 
 
 module.exports = router

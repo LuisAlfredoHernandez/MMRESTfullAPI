@@ -73,8 +73,8 @@ const getResourceByParam = async (req, res = response) => {
 }
 
 const deleteResource = async (req, res = response) => {
-    const { nombreCategoria } = req.params
-    const resource = await Resource.findOne({ nombreCategoria })
+    const { nombreImagen } = req.params
+    const resource = await Resource.findOne({ nombreImagen })
     if (!resource) {
         return res.status(404).json({
             msg: 'No se encontro el recurso!',
